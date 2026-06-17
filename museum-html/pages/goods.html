@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>관람정보</title>
+  <link rel="stylesheet" href="../css/pages.css" /> <!-- pages 폴더를 한번더 거치기때문에 ../ 추가 -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/sunghyunzz/eulyoo1945/eulyoo1945.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <!--언어&로그인&회원가입-->
+        <div id="topMenu">
+            <ul class="lang"> <!-- 전체 메뉴 묶음 -->
+                <li>language > <!-- 1차 메뉴 -->
+                    <ul class="depth"> <!-- 2차 메뉴 묶음 -->
+                        <li>한국어</li> <!-- 2차 메뉴 항목 -->
+                        <li>English</li>
+                        <li>日本語</li>
+                        <li>中文</li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="authentication">
+                <div class="login">로그인</div>
+                <div class="signUp">회원가입</div>
+            </div>
+        </div>
+        <!--메인메뉴-->
+        <div id="mainMenu">
+            <a href="../index.html" class="detailMenu">홈</a>
+            <a href="information.html" class="detailMenu">관람정보</a>
+            <a href="history.html" class="detailMenu">전시</a>
+            <a href="" class="detailMenu">문화행사</a>
+            <a href="" class="detailMenu">박물관소개</a>
+            <a href="goods.html" class="detailMenu">굿즈</a>
+        </div>
+
+        <!-- 구쭈 -->
+        <div id="goods">
+            <div class="bannerSlide">
+                <div class="banner active">
+                    <div class="bannerImg">
+                        <img src="../image/goodsbanner1.jpg"/>
+                    </div>
+                    <span class="bannerSubTitle">
+                        &lt; 유물멍: 오래 볼수록 사랑스러운 것들 &gt; 출간 기념 이벤트
+                    </span>
+                    <p class="bannerTitle">
+                        모든 도서 구매 시<br/>
+                        유물멍 책갈피 증정
+                    </p>
+                </div>
+                <div class="banner">
+                    <div class="bannerImg">
+                        <img src="../image/goodsbanner2.jpg"/>
+                    </div>
+                    <span class="bannerSubTitle">
+                        뮷즈 X 한국 조폐공사 협업<br/>
+                        화폐 제조 기술로 표현된 프리미엄 문화예술작품
+                    </span>
+                    <p class="bannerTitle">
+                        손끝으로 느끼는 사유의 깊이<br/>
+                        반가유상 요판화
+                    </p>
+                </div>
+                <div class="banner">
+                    <div class="bannerImg">
+                        <img src="../image/goodsbanner3.jpg"/>
+                    </div>
+                    <span class="bannerSubTitleColor">
+                        국립박물관 유물의 아름다운이 내 일상으로
+                    </span>
+                    <p class="bannerTitleColor">
+                        일상에서 만나는<br/>
+                        박물관 유물
+                    </p>
+                </div>
+                <div class="banner">
+                    <div class="bannerImg">
+                        <img src="../image/goodsbanner4.jpg"/>
+                    </div>
+                    <span class="bannerSubTitleColor">
+                        ‘국보 속에 라이언의 들어왔다’<br/>
+                        카카오프렌즈 온라인숍에서 다양한 상품을 만나보세요
+                    </span>
+                    <p class="bannerTitleColor">
+                        뮷즈 X 카카오프렌즈<br/>
+                        협업 상품
+                    </p>
+                </div>
+
+
+                <div class="slideControl">
+                    <div class="slideBtn">
+                        <!-- active중일땐 일시정지 이미지가 맞음 -->
+                        <img src="../image/icon_pause.png" alt="일시정지" class="slideBtnIcon" />
+                    </div>
+                    <span class="firstNum">01</span>
+                    <div class="progressBar">
+                        <div class="progressActive"></div> <!-- 진한 재생바-->
+                    </div>
+                    <span class="totalNum">04</span>
+                </div>
+            </div>
+
+            <div class="storeList">
+                <span class="storeTitle">문구사무</span>
+                <div class="storeSlideWrap"> <!-- 보이는 영역 -->
+                    <button class="storePrev">
+                        <img src="../image/icon_arrow_left.png"/>
+                    </button>
+                    <!-- <i class="fa-solid fa-arrow-left"></i> -->
+                    <div class="storeViewport"> <!-- 숨김영역-->
+                        <div class="storeTotalInfo"> <!-- 상품 12개가 들어있는 롱줄-->
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/office card1.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">[탕탕평평 전시] 나전 명함집(사수도 청룡)</div>
+                                    <div class="storeInfoSubTitle">&lt; 탕탕평평, 글과 그림의 힘 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 30,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/destmat1.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">데스크 장패드 & 스티커 세트 (나전칠기)</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 32,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/obje.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">명태 오브제</div>
+                                    <div class="storeInfoSubTitle">&lt; 2023 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 32,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/bookmark.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">갓 책갈피</div>
+                                    <div class="storeInfoSubTitle">&lt; 2024 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 10,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/postcard.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">경주 금관엽서 국립경주박물관 특화상품</div>
+                                    <div class="storeInfoSubTitle">구본창 작가 협업</div>
+                                    <div class="storeInfoMoney">&#8361 3,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/bookmark.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">갓 책갈피</div>
+                                    <div class="storeInfoSubTitle">&lt; 2024 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 10,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/deskmat2.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">데스크 장패트&스티커 세트 (나전주칠)</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 32,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/office card2.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">나전칠기 명함집 (천마도)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 30,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/postcard castle.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">궁 엽서세트</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 대한민국 관광공모 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 15,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/sticker1.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">데니 태극기 스티커</div>
+                                    <div class="storeInfoSubTitle">광복 80주년 기념상품</div>
+                                    <div class="storeInfoMoney">&#8361 2,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/cilp board.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">단청 포켓 클립보드</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 8,200</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/sticker2.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">한산도 대첩 키트</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 19,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/margnet.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">미니 보자기 마그넷 세트 (단독 구매)</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 48,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="storeNext">
+                        <img src="../image/icon_arrow_right.png"/>
+                    </button>
+                    <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                </div>
+            </div>
+
+            <div id="storeBest">
+                <span class="storeTitle">베스트</span>
+                <div class="bestSlideWrap"> <!-- 보이는 영역 -->
+                    <div class="bestSlideTrack"> <!-- 움직이는 긴 줄-->
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_pensive position.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">반가유상 미니어처 ver3 (83호)</div>
+                                    <div class="storeInfoSubTitle">국립중앙박물관 특화상품</div>
+                                    <div class="storeInfoMoney">&#8361 65,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_drinkcup.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">취객선비 3인방 변색 잔세트 (단독구매)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 26,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_beachtower.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">곤룡포 비치(다용도) 타월 (단독구매)</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 45,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_goldsmell.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">금동대향로 미니어처 (단독구매)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 99,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_celadon cupset.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">청자 잔세트</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 39,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_fan handchief.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">신라 금관 부채 손수건 세트</div>
+                                    <div class="storeInfoSubTitle">APEC 2025 KOREA <br/>한국공예디자인문화진흥원 협업상품</div>
+                                    <div class="storeInfoMoney">&#8361 35,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_lighting set.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">석굴암 조명 (단독구매)</div>
+                                    <div class="storeInfoSubTitle">&lt; 2024 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 46,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="storeBestSlide">
+                            <div class="bestImg">
+                                <img src="../image/goodsimg/best_moonkeyring.jpg"/>
+                            </div>
+                            <div class="bestInfo">
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">백자 달항아리 키링</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 뮷즈 공모 선정작 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 15,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="storeList">
+                <span class="storeTitle">신상품</span>
+                <div class="storeSlideWrap"> <!-- 보이는 영역 -->
+                    <button class="storePrev">
+                        <img src="../image/icon_arrow_left.png"/>
+                    </button>
+                    <!-- <i class="fa-solid fa-arrow-left"></i> -->
+                    <div class="storeViewport"> <!-- 숨김영역-->
+                        <div class="storeTotalInfo"> <!-- 상품 12개가 들어있는 롱줄-->
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_painting.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">반가사유상 요판화(대형)(단독 예약 구매)</div>
+                                    <div class="storeInfoSubTitle">한국조폐공사 협업상품</div>
+                                    <div class="storeInfoMoney">&#8361 363,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_mugcup.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">청자황금 12지 머그잔 (단독구매)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 45,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_danchung keyboard.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">단청 무선 블루투스 키보드(흰색) (단독구매)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 145,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_glasses pouch.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">안경 파우치 (모란)</div>
+                                    <div class="storeInfoSubTitle">국립박물관 특화상품</div>
+                                    <div class="storeInfoMoney">&#8361 5,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_lamp.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">등롱 이순신 램프</div>
+                                    <div class="storeInfoSubTitle">&lt; 우리들의 이순신 &gt; 전시</div>
+                                    <div class="storeInfoMoney">&#8361 50,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_carabiner.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">거북선 카라비너</div>
+                                    <div class="storeInfoSubTitle">&&lt; 우리들의 이순신 &gt; 전시</div>
+                                    <div class="storeInfoMoney">&#8361 10,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_freshener.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">미륵사지석탑 석고방향제</div>
+                                    <div class="storeInfoSubTitle">&lt; 국립익산박물관 특화상품 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 45,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_glowting.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">나전칠기 명함집 (천마도)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 30,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/postcard castle.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">미니 꽃창상 글리팅</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 대한민국 관광공모 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 8,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_goryeo keyboard.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">고려청자 유선 LED 키보드 (단독구매)</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 119,700</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_hat string.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">조선의 멋, 갓끈</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 32,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_glowting2.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">미니 일월오봉도 글리팅</div>
+                                    <div class="storeInfoSubTitle">&lt; 2025 대한민국 관광공모 &gt;</div>
+                                    <div class="storeInfoMoney">&#8361 8,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="storeSlide">
+                                <img src="../image/goodsimg/new_daedongyeojido.jpg" class="storeImg"/>
+                                <div class="line"></div>
+                                <div class="storeTextInfo">
+                                    <div class="storeInfoTitle">대동여지도 한지 포스터</div>
+                                    <div class="storeInfoSubTitle">-</div>
+                                    <div class="storeInfoMoney">&#8361 8,000</div>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="storeNext">
+                        <img src="../image/icon_arrow_right.png"/>
+                    </button>
+                    <!-- <i class="fa-solid fa-arrow-right"></i> -->
+                </div>
+            </div>
+            
+        </div>
+
+
+    </div>
+<script src="../script.js"></script>
+</body>

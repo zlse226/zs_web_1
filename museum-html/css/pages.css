@@ -1,0 +1,585 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-width: 1920px; /* 최소 넓이(body, wrap, historyBg */
+    width: 100%;
+    height: 100%;
+    /* background-color: #0F0C0C; */
+    background-image: url(../image/background.png);
+    background-size: 1920px 1080px ;
+    color: rgb(140, 140, 140);
+
+    font-family: 'Eulyoo1945', serif;
+
+}
+
+#wrap{    
+    min-width: 1920px; /* 최소 넓이 */
+    position: relative; /* 배경보다 메뉴가 위로 오게 하기 위한 기준 */
+}
+
+#topMenu{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+
+    position: absolute; /* 배경보다 위로 올림*/
+    z-index: 10; /* 배겨보다 위 */
+}
+
+/* language 탭 */
+
+.lang{
+    width: auto;
+    height: 25px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.lang li{
+    display: flex;
+    position: relative;
+    list-style-type: none;
+    font-size: 16px;
+    color: rgb(140, 140, 140);
+}
+.depth{
+    /* display: none; 애니메이션 적용 안되므로 hide -> opacity:0으로 */
+    position: absolute; /* li에 relative를 함으로서 기준이 상위의 li 로 됨*/
+    white-space: nowrap;
+    top: 0; /* 부모 li와 같은 높이에서 시작 */
+    left: calc(100% + 15px); /* 부모 li의 오른쪽 끝 + 오른쪽 끝 기준 20px 떨어져서 시작 */
+    gap: 20px; /* flex 이므로 gap으로 간격 조절 or .depth li 에 margin 준다*/
+
+    display: flex; /*  서브탭 가로 정렬을 위해서 여기에 고정 */
+    opacity: 0; /* 숨김 상태 + 공간/이벤트 남음 */
+    transform: translateX(-10px);
+    visibility: hidden; /* 안보임 + 마우스 이벤트 막힘 */
+    transition: opacity 0.3s ease, transform 0.3s ease;    
+}
+
+.lang li:hover .depth{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* 로그인 & 회원가입 */
+#authentication{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.login {
+    width: auto; /*또는 fit-content (텍스트 크기에 맞춤) */
+    font-size: 16px;
+
+}
+
+.login:hover{
+    text-decoration: underline; /* 마우스 올리면 밑줄 */
+}
+
+.signUp{
+    width: auto;
+    font-size: 16px;
+
+}
+
+.signUp:hover{
+    text-decoration: underline;
+}
+
+/* 메인 메뉴 목록 + 이미지 */
+#mainMenu{
+    width: 820px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+
+    position: absolute; /* 배경보다 위로 올림 */
+    z-index: 10;
+    left: 50%; /* 화면 가운데로 이동 (왼쪽 모서리가) */
+    transform: translateX(-50%); /* 메뉴 자체 중간이 정확히 중앙으로 오게 */
+    top: 30px; /* absolute때문에 margin 에서 나와서 위에 붙으므로 간격 */
+
+}
+.detailMenu a{
+    /* a태그 기본 스타일 제거 */
+    color: inherit; /* 부모 글자색 적용 */
+    text-decoration: none; /* 밑줄제거*/
+}
+.detailMenu{
+    color: inherit; /* 부모 글자색 사용*/
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.detailMenu:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* history.html - 층별 */
+
+#historyBg{
+    min-width: 1920px; /* 최소 넓이 */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.historyBgBox{
+    flex: 1; /* 지정한 세장이 이미지가 동일 비율로 꽉채움 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFFFFF;
+    position: relative;
+}
+
+.historyBgBox.first {
+    background-image: url(../image/floor_1.jpg);
+    text-align: center;
+}
+.historyBgBox.second{
+    background-image: url(../image/floor_2.jpg);
+    text-align: center;
+    
+}
+.historyBgBox.third{
+    background-image: url(../image/floor_3.jpg);
+    text-align: center;
+}
+
+.historyBoxText{
+    width: 640px;
+    height: 567px;
+    margin-top: 130px;
+
+    position: relative; /* z-index 적용 */
+    z-index: 1; /* 어두운 막 아래 */
+}
+
+.textTitle{
+    font-size: 20px;
+}
+    
+.textfloor {
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+.textInfo {
+    font-size: 16px;   
+    margin-top: 228px; 
+}
+
+.historyBoxImg{
+    width: 640px;
+    position: absolute;
+    /* 이미지 중앙 위치 정렬 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* 이미지 처음에 숨기고 부드럽게 나타남 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3; /* 어두운 막보다 위에 있어서 선명하게 보임 */
+}
+
+.historyBgBox:hover .historyBoxImg{
+    opacity: 1;
+}
+
+.historyBgBox::before{
+    content: ""; /* 어두운 막 생성 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* 기본 투명 */
+    transition: background-color 0.3s ease; /* 부드럽게 어두워짐 */
+    z-index: 2; /* 텍스트 위, 이미지 아랯 */
+}
+
+
+.historyBgBox:hover::before{
+    /* ::before을 붙여야하는 이유: img위를 덮는게아니라 배경색만 바꾸는 것이므로 */
+    background-color: rgba(0, 0, 0, 0.8); /* hover 시 배경+텍스트 어둡게 */
+}
+
+
+
+/* information.html - 관람시간 정보 */
+
+#infoImg{
+    width: 1440px;
+    height: 580px; /* 기본이미지 사이즈 440 + padding 140 */
+    margin: 0 auto;
+    padding-top: 140px;
+}
+
+#infoImg img{
+    width: 100%;
+    height: 100%;
+}
+
+#wrapInfo{
+    width: 1440px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    margin: 370px auto 150px;
+    gap: 350px;
+    flex-direction: column;
+}
+
+.infoBox{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;;
+}
+
+.infoTitle{
+    width: 88px;
+    display: flex;
+    text-align: center;
+    gap: 20px;
+}
+
+.infokoTitle{
+    width: 44px;
+    writing-mode: vertical-lr; /* 글자를 세로 방향으로 배치 */
+    font-size: 44px;
+    
+}
+
+.infoenTitle{
+    width: 20px;
+    writing-mode: vertical-lr; /* 글자를 세로 방향으로 배치 */
+    font-size: 20px;
+    margin-top: 70px;
+}
+
+.info{
+    width: 1000px; /* left가 적용되려면 영역 지정이 있어야함 */
+    font-size: 28px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+
+/* concert.html - 문화행사 */
+#concertEvent{
+    min-width: 1920px;
+    padding-top: 200px; /* margin이 겹쳐서 메인메뉴가 같이 내려오므로 padding 사용 */
+}
+
+#calendar{
+    width: 1610px;
+    height: 65px;
+    margin-left: 210px;
+}
+
+
+/* goods.html - 구쭈 */
+/******* 메인 배너 *******/
+
+#goods{
+    min-width: 1920px;
+    display: flex;
+    flex-direction: column;
+    gap: 210px;
+}
+
+.bannerSlide{
+    width: 100%;
+    min-width: 1920px;
+    min-height: 1047px;
+    aspect-ratio: 1920 / 1047; /* 이미지 비율 유지, 높이는 자동계산*/
+    margin: 0 auto;
+    position: relative; /* banner와 control 위치 기준 */
+}
+
+.banner{
+    width: 100%; /* 부모크기 자동따라감 */
+    height: 100%;
+    position: absolute; /* 배너들을 겹쳐 놓음 */
+    opacity: 0;
+    transition: opacity 0.6s ease;
+
+}
+
+.banner.active{
+    opacity: 1;
+}
+
+.bannerImg{
+    width: 100%;
+    height: 100%;
+}
+
+.bannerImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* img는 기본 inline으로 글자처럼 취급됨 -> block 주며 아래 살짝생기는 여백 삭제 */
+}
+
+.bannerSubTitle{
+    width: 750px;
+    height: auto;
+    font-size: 28px;
+    position: absolute;
+    /* absolute하고나서 top, left로 위치 지정 해줘야함 */
+    top: 320px;
+    left: 106px;
+    color: #FFFFFF;
+}
+
+.bannerTitle{
+    width: 850px;
+    height: auto;
+    font-size: 68px;
+    position: absolute;
+    top: 440px;
+    left: 106px;
+    color: #FFFFFF;
+}
+
+.bannerSubTitleColor{
+    width: 750px;
+    height: auto;
+    font-size: 28px;
+    position: absolute;
+    /* absolute하고나서 top, left로 위치 지정 해줘야함 */
+    top: 320px;
+    left: 106px;
+    color: #3c3c3c;
+}
+
+.bannerTitleColor{
+    width: 850px;
+    height: auto;
+    font-size: 68px;
+    position: absolute;
+    top: 440px;
+    left: 106px;
+    color: #3c3c3c;
+}
+
+.slideControl{
+    position: absolute; /* 배너 위에 고정 */
+    top: 680px;
+    left: 106px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.slideBtnIcon{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.firstNum, .totalNum{
+    width: 40px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+
+.progressBar{
+    width: 360px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.35);
+    position: relative;
+    
+}
+
+.progressActive{
+    width: 90px;
+    height: 2px;
+    position: absolute;
+    background-color: white;
+    transition: left 0.4s ease;
+}
+
+/******* 문구사무 *******/
+
+.storeList{
+    width: 1302px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.storeTitle{
+    width: 205px;
+    height: 105px;
+    font-size: 52px;
+}
+
+.storeTotalInfo{
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.storeSlide{
+    width: 303px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.storeImg{
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.line{
+    width: 303px;
+    height: 1px;
+    background-color: #ffffff;
+}
+
+.storeTextInfo{
+    width: 303px;
+    height: 160px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.storeInfoTitle{
+    height: 70px;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+
+.storeInfoSubTitle{
+    height: 38px;
+    font-size: 16px;
+    margin-top: 20px;
+    color: rgb(160, 152, 152)
+}
+
+.storeInfoMoney{
+    height: 28px;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.storeSlideWrap{
+    position: relative;
+    margin-top: 90px;
+}
+
+.storeViewport{
+    width: 1302px; /* 4개 영역(storeBest) */
+    overflow: hidden; /* 넘치는 상품 숨김*/
+}
+
+.storeTotalInfo{
+    gap: 30px;
+    transition: transform 0.3s ease;
+
+}
+
+.storePrev, .storeNext{
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%); /* 버튼의 윗변 기준으로 이동하여 가운대로옴*/
+
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+}
+
+.storePrev img, .storeNext img{ width: 100%; height: 100%;}
+
+.storePrev{
+    left: -200px; /* storeSlideWrap(부모) 기준으로 이동 */
+}
+
+.storeNext{
+    right: -200px; /* storeSlideWrap(부모) 기준으로 이동 */
+}
+
+
+
+/******* 베스트 *******/
+
+#storeBest{
+    width: 1302px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.bestSlideWrap{
+    width: 1013px; /* 슬라이드 한장의 너비 */
+    overflow: hidden;
+}
+
+.bestSlideTrack{
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.storeBestSlide{
+    width: 1013px;
+    height: auto;
+    margin-top: 85px;
+    display: flex;
+    flex-shrink: 0; /* flex안에서 슬라이드가 줄어들지 않게 하기 위함 (슬라이드 한장씩 이동하므로) */
+}
+
+.bestImg{
+    width: 650px;
+    height: 650px;
+}
+
+.bestImg img{
+    width: 100%;
+    height: 100%;
+}
+
+.bestInfo{
+    margin: 402px 0 50px 60px;
+}
+
+
