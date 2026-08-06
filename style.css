@@ -10,10 +10,9 @@ body{
     /* background-color: #0F0C0C; */
     background-image: url(image/background.png);
     background-size: 1920px 1080px ;
-    color: rgb(140, 140, 140);
-
+    /* color: rgb(140, 140, 140); */
+    color: white;
     font-family: 'Eulyoo1945', serif;
-
 }
 
 
@@ -159,13 +158,10 @@ body{
     text-decoration: none; /* 기본 밑줄 제거 */
     display: inline-block;  /* 글자 길이 유지 + 여백,크기 조절 안정 */
     padding-bottom: 8px; /* 글자와 밑줄 사이 간격 */
-    color: rgb(140, 140, 140);
-    border-bottom: 2px solid rgb(140, 140, 140); /* 글자 길이 만큼 밑줄 */
+    border-bottom: 2px solid white; /* 글자 길이 만큼 밑줄 */
+    color: inherit;;
 }
 
-.subTitle a{
-    font-size: 50px;
-}
 
 #display{
     display: flex;
@@ -246,22 +242,22 @@ body{
 /* 세번째 페이지 -문화행사 */
 
 #eventTitle{
-    height: 1080px;
+    min-height: 1080px;
     margin: 0 auto;
 }
 
 #displayEvent{
     width: 1820px;
-    height: 575px;
     display: flex;
     margin: 160px auto 0;
     gap: 80px;
 }
+
 .event{
     align-items: center;
 }
 
-#titleBox-row{
+.titleBox-row{
     width: 135px;
     height: 55px;
     display: flex;
@@ -285,6 +281,35 @@ body{
     height: 480px;
     position: relative; /* absolute 기준점 */
     overflow: hidden; /* 영역밖 이미지는 숨김 */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+
+}
+
+.posterBtn{
+    position: absolute;
+    width: 100px;
+    height: 480px;
+    top: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 5;
+    color: #fff;
+}
+
+.posterBtn img{
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.prevBtn{
+    left: 15px;
+}
+
+.nextBtn{
+    right: 15px;
 }
 
 .poster{
@@ -494,9 +519,7 @@ body{
     width: 930px;
     height: 60px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 38px;
+    gap: 20px;
     justify-content: space-around;
 }
 

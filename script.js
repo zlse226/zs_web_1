@@ -24,6 +24,8 @@ const sliders = document.querySelectorAll(".posterSlider");
 
 sliders.forEach(function (slider){ 
     const posters = slider.querySelectorAll(".poster"); 
+    const prevBtn = slider.querySelector(".prevBtn");
+    const nextBtn = slider.querySelector(".nextBtn");
 
     // changeSlide: 슬라이드 이미지를 바꾸는 함수명, direction: prev/next 중 무엇을 받을지에 대한 임의의 변수명
     function changeSlide(direction) {
@@ -64,6 +66,13 @@ sliders.forEach(function (slider){
             }
         })
     });
+
+    prevBtn.addEventListener("click", function(){
+        changeSlide("prev");
+    })
+    nextBtn.addEventListener("click", function(){
+        changeSlide("next")
+    })
 });
 
 
@@ -162,20 +171,33 @@ storeLists.forEach(function(list){
 const bestTrack = document.querySelector(".bestSlideTrack");
 const bestSlide = document.querySelectorAll(".storeBestSlide");
 
-// 실제 너비 가져오기 
-const firstSlide = bestSlide[0]; // 첫번째 슬라이드
-// offsetWidth는 실제 화면에 랜더링된 너비를 가져오는 JS기능
-const slideWidth = firstSlide.offsetWidth; 
+// 추가
+const bestCurrent = document.querySelector(".bestCurrent");
+const bestTotal = document.querySelector(".bestTotal");
+const bestPrev = document.querySelector(".bestPrev");
+const bestNext = document.querySelector(".bestNext");
+
+
+// // 실제 너비 가져오기 
+// const firstSlide = bestSlide[0]; // 첫번째 슬라이드
+// // offsetWidth는 실제 화면에 랜더링된 너비를 가져오는 JS기능
+// const slideWidth = firstSlide.offsetWidth; 
 
 let bestIndex = 0;
+
+bestTotal.textContent = String(bestSlide.length).padStart(2, "0"); // 추가
 
 function trackStyle(){
     // console.log(bestIndex);
     // console.log(slideWidth);
+    const slideWidth = bestSlide[0].offsetWidth;
+
     bestTrack.style.transform = "translateX(" + -(bestIndex * slideWidth) + "px)";
+
+    bestCurrent.textContent = String(bestIndex + 1).padStart(2, "0");
 }
 
-function showTrack(){
+function nextBestSlide(){
     bestIndex++;
     // console.log("실행");
     if (bestIndex >= bestSlide.length) { /* bestSlide.length로 슬라이드 수 지정 */
@@ -183,6 +205,24 @@ function showTrack(){
     }
     trackStyle(); /* 첫화면 표시 */
 }
-setInterval(showTrack, 3000); /* 자돵시작 (showTrack안에 있으면 index값 늘어날대마다 초수가 늘어남) */
+function prevBestSlide(){
+    bestIndex--;
+    // console.log("실행");
+    if (bestIndex < 0) {
+        bestIndex = bestSlide.length-1;
+    }
+    trackStyle(); /* 첫화면 표시 */
+}
+
+// 추가 : 다음버튼
+bestNext.addEventListener("click", function(){
+    nextBestSlide();
+})
+
+// 추가 : 이전버튼
+bestPrev.addEventListener("click", function(){
+    prevBestSlide();
+})
+setInterval(nextBestSlide, 3000); /* 자돵시작 (showTrack안에 있으면 index값 늘어날대마다 초수가 늘어남) */
 
 

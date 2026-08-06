@@ -11,7 +11,8 @@ body{
     /* background-color: #0F0C0C; */
     background-image: url(../image/background.png);
     background-size: 1920px 1080px ;
-    color: rgb(140, 140, 140);
+    /* color: rgb(140, 140, 140); */
+    color: white;
 
     font-family: 'Eulyoo1945', serif;
 
@@ -144,6 +145,7 @@ body{
 
 .historyBgBox{
     flex: 1; /* 지정한 세장이 이미지가 동일 비율로 꽉채움 */
+    min-width: 0; /* 내부 이미지로 인해 박스 커지는것 방지*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -152,6 +154,7 @@ body{
     align-items: center;
     color: #FFFFFF;
     position: relative;
+    gap: 250px;
 }
 
 .historyBgBox.first {
@@ -169,8 +172,8 @@ body{
 }
 
 .historyBoxText{
-    width: 640px;
-    height: 567px;
+    min-width: 640px;
+    height: 145px;
     margin-top: 130px;
 
     position: relative; /* z-index 적용 */
@@ -186,25 +189,26 @@ body{
     margin-top: 50px;
 }
 
-.textInfo {
-    font-size: 16px;   
-    margin-top: 228px; 
-}
-
-.historyBoxImg{
-    width: 640px;
-    position: absolute;
-    /* 이미지 중앙 위치 정렬 */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+.overlay{
+    min-width: 640px;
+    height: auto;
     /* 이미지 처음에 숨기고 부드럽게 나타남 */
     opacity: 0;
-    transition: opacity 0.3s ease;
+    position: relative;
     z-index: 3; /* 어두운 막보다 위에 있어서 선명하게 보임 */
+    transition: opacity 0.3s ease,
+                transform 0.3s ease,
+                visibility 0.3s ease;
 }
 
-.historyBgBox:hover .historyBoxImg{
+.textInfo{
+    font-size: 16px;   
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.historyBgBox:hover .overlay{
     opacity: 1;
 }
 
@@ -218,14 +222,71 @@ body{
     background-color: rgba(0, 0, 0, 0); /* 기본 투명 */
     transition: background-color 0.3s ease; /* 부드럽게 어두워짐 */
     z-index: 2; /* 텍스트 위, 이미지 아랯 */
+    pointer-events: none; /* 마우스 클릭이 막을 통과해서 버튼이 클릭되게*/
 }
-
 
 .historyBgBox:hover::before{
     /* ::before을 붙여야하는 이유: img위를 덮는게아니라 배경색만 바꾸는 것이므로 */
     background-color: rgba(0, 0, 0, 0.8); /* hover 시 배경+텍스트 어둡게 */
 }
 
+.overlayMap button{
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    cursor: pointer;
+    font-family: 'Eulyoo1945', serif;
+    font-size: 16px;
+    padding: 5px; /* 0px: 브라우저가 버튼에 기본 여백을 넣는것을 방지 */
+}
+
+.overlayMap button:hover{
+    text-decoration: underline;
+}
+
+.historyBoxImg{
+    opacity: 0;
+}
+
+.mapModal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* .historyBgBox::before가 2라서 가려질수있으므로 */
+    background: rgba(0, 0, 0, 0.5); /* 배경으로 살짝 어둡게 처리 */
+    backdrop-filter: blur(2px); /* 배경에 블러 처리 */
+}
+
+.mapModal.open{
+    display: flex;
+}
+
+.modalContent{
+    width: min(1000px, 100%);
+
+    max-height: calc(100vh - 80px);
+    position: relative;
+}
+
+.mapModalImg{
+    width: 100%;
+    height: 100%;
+}
+
+.mapCloseBtn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
 
 /* information.html - 관람시간 정보 */
@@ -309,7 +370,6 @@ body{
     min-width: 1920px;
     display: flex;
     flex-direction: column;
-    gap: 210px;
 }
 
 .bannerSlide{
@@ -438,7 +498,7 @@ body{
 .storeList{
     width: 1302px;
     height: auto;
-    margin: 0 auto;
+    margin: 300px auto;
 }
 
 .storeTitle{
@@ -448,7 +508,7 @@ body{
 }
 
 .storeTotalInfo{
-    height: auto;
+    height: 630px;
     display: flex;
     justify-content: space-between;
 }
@@ -458,12 +518,16 @@ body{
     height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .storeImg{
     width: 100%;
     height: auto;
-    margin-bottom: 30px;
+}
+
+.infoLine{
+    margin-top: 30px;
 }
 
 .line{
@@ -553,6 +617,7 @@ body{
 .bestSlideWrap{
     width: 1013px; /* 슬라이드 한장의 너비 */
     overflow: hidden;
+    position: relative; /* bestCotrol의 위치 기준 */
 }
 
 .bestSlideTrack{
@@ -565,6 +630,7 @@ body{
     height: auto;
     margin-top: 85px;
     display: flex;
+    justify-content: space-between;
     flex-shrink: 0; /* flex안에서 슬라이드가 줄어들지 않게 하기 위함 (슬라이드 한장씩 이동하므로) */
 }
 
@@ -579,7 +645,36 @@ body{
 }
 
 .bestInfo{
-    margin: 402px 0 50px 60px;
+    margin-top: 380px;
 }
 
+.bestControl{
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 
+.bestNumber {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.bestCurrent{
+    color: #fff;
+}
+
+.bestPrev, .bestNext{
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity .3s;
+}
+
+.bestPrev:hover, .bestNext:hover{
+    opacity:.5;
+}
